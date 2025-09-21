@@ -1,5 +1,6 @@
 # Experiment
-device_id: cpu
+algo : rl2_ppo
+device_id: cpu 
 seed: 42
 # Trial episodes
 episodes: 30

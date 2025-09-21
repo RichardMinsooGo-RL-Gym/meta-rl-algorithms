@@ -1,4 +1,5 @@
 # Experiment
+algo : mg_a2c
 device_id: cpu 
 seed: 42
 epochs: 1000
