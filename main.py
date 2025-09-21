@@ -50,9 +50,19 @@ def main(config):
 
     writer = SummaryWriter(os.path.join(config["path"], "tb"))
 
+    print("Algoritm :", config["algo"])
+
+    if config["algo"] == "rl2_ppo":
+        train_rl2_ppo(config, envs, test_envs=test_envs, writer=writer)
+    elif config["algo"] == "mg_a2c":
+        train_mg_a2c(config, envs, writer=writer)
+    else:
+        print("No matching Algorithm")
+
+
     # Temporary interface to allow all agents to run in similar fashion
     # train_<meta>_<agent>(config, envs: list[Env], test_envs: list[Env], writer)
-    train_mg_a2c(config, envs, writer=writer)
+    # train_mg_a2c(config, envs, writer=writer)
     # train_rl2_ppo(config, envs, test_envs=test_envs, writer=writer)
 
 
@@ -100,5 +110,7 @@ if __name__ == "__main__":
     import warnings
 
     warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+    # print(config["name"])
 
     main(config)
